@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2406                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 -1);
+
+boundaryField
+{
+    rotatingAMI
+    {
+        type cyclicAMI;
+    }
+
+    fixedAMI
+    {
+        type cyclicAMI;
+    }
+
+    inlet
+    {
+        type 			fixedValue;
+        value           uniform (0 0 -1);
+    }
+
+    outlet
+    {
+        type zeroGradient;
+    }
+	blade1
+    {
+        type noSlip;  // The blade walls have zero velocity (no-slip condition)
+    }
+	blade2
+    {
+        type noSlip;  // The blade walls have zero velocity (no-slip condition)
+    }
+	blade3
+    {
+        type noSlip;  // The blade walls have zero velocity (no-slip condition)
+    }
+    hub
+    {
+        type noSlip;
+    }
+	
+	movingHub
+	{
+        type            rotatingWallVelocity;
+        origin          (0 0 0);
+        axis            (0 0 1);
+        omega           0.1;
+    }
+	
+    surroundingsNoSlip
+    {
+        type noSlip;
+    }
+	
+	surroundingsSlip
+    {
+        type slip;
+    }
+}
+
+
+// ************************************************************************* //

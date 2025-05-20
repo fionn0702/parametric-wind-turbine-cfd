@@ -8,8 +8,8 @@ and all geometry and meshing steps are parameterised through a single main scrip
 
 Developed by Fionn McEvoy as part of a Master's thesis at University College Dublin.
 
-A simple LAMINAR example case is included in this repository (see `HAWT_example_case`) containing all necessary OpenFOAM 
-dictionary files (and python scripts) and a working setup that runs successfully with the generated mesh.
+A simple LAMINAR example case is included in this repository (HAWT_example_case).
+This repo contains all the individual dictionary files and Python scripts used to generate a working OpenFOAM mesh. Users will need to manually recreate the standard OpenFOAM folder structure (0/, system/, constant/) and place the Python scripts inside system/Python/. Once set up, run main.py to generate the blockMeshDict, then run blockMesh followed by pimpleFoam to execute the simulation.
 
 Key Features:
 - Parametric 3-blade wind turbine mesh
